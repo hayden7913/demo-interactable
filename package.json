@@ -43,6 +43,8 @@
     "webpack-hot-middleware": "^2.10.0"
   },
   "dependencies": {
+    "body-parser": "^1.17.0",
+    "interact.js": "^1.2.8",
     "react": "^0.14.6",
     "react-dom": "^0.14.6"
   }
