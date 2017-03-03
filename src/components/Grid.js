@@ -1,20 +1,21 @@
 import React from 'react'
+import { cellHeight, cellWidth } from '../config';
 
 const gridStyle = {
   "display": "block",
-  "marginTop": "50px"
+  "margin": "50px auto"
 }
 
 export default function Grid(props) {
   
   return (
-  <svg style={gridStyle} width="1000" height="1000 ">
+  <svg style={gridStyle} width={props.width} height={props.height}>
     <defs>
-      <pattern id="cell" width="10" height="10" patternUnits="userSpaceOnUse">
-        <path d={`M ${10} 0 L 0 0 0 ${10}`} fill="none" stroke="#ADD8E6" strokeWidth="1"/>
+      <pattern id="cell" width={cellWidth} height={cellHeight} patternUnits="userSpaceOnUse">
+        <path d={`M ${cellHeight} 0 L 0 0 0 ${cellWidth}`} fill="none" stroke="#ADD8E6" strokeWidth="1"/>
       </pattern>
     </defs>
-    <rect width="100%" height="1000" fill="url(#cell)" />
+    <rect width="100%" height={props.height} fill="url(#cell)" />
     {props.children}
 </svg>);
 

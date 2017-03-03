@@ -6,7 +6,6 @@ import { cellHeight, cellWidth } from '../config';
 const draggableOptions = {
   restrict: {
       restriction: "parent",
-      //endOnly: true,
       elementRect: { top: 0, left: 0, bottom: 1, right: 1 }
     },
     
@@ -26,6 +25,7 @@ const draggableOptions = {
     let dy = event.dy
     let x,y;
     
+    // temporary hack to fix bug with snap to grid feature
     dx = dx > 0 && Math.abs(dx) < cellWidth ? cellWidth : Math.floor(dx/cellWidth)*cellWidth;
     dy = dy > 0 && Math.abs(dy) < cellHeight ? cellHeight : Math.floor(dy/cellHeight)*cellHeight;
     
@@ -33,7 +33,8 @@ const draggableOptions = {
     x = (parseFloat(target.getAttribute('data-x')) || 0) + dx
     y = (parseFloat(target.getAttribute('data-y')) || 0) + dy
     
-    x = parseFloat(target.getAttribute('data-x')) + parseFloat(target.getAttribute('x')) < 0 ? 0 - parseFloat(target.getAttribute('x')) : x; 
+    // temporary hack to attempt to fix bug with drag restriction
+    //x = parseFloat(target.getAttribute('data-x')) + parseFloat(target.getAttribute('x')) < 0 ? 0 - parseFloat(target.getAttribute('x')) : x; 
     
     // translate the element
     target.style.webkitTransform = 
@@ -50,7 +51,7 @@ const draggableOptions = {
 export function Rect(props) {
   return (
     <Interactive draggable draggableOptions={draggableOptions}>
-        <rect x="100" width="300" height="100" fill="#00a072" />
+      <rect x={props.x} y={props.y} width={props.width} height={props.height} fill={props.fill} />
     </Interactive>
   );
 }
@@ -58,7 +59,7 @@ export function Rect(props) {
 export function Circle(props) {
   return (
     <Interactive draggable draggableOptions={draggableOptions}>
-       <circle x="0" cx={50} cy={50} r={50} fill="violet" />
+       <circle x={props.x} y={props.y} cx={props.cx} cy={props.cy} r={props.r} fill={props.fill} />
     </Interactive>
   );
 }

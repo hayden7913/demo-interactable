@@ -2,7 +2,6 @@ import React, { Component, cloneElement } from 'react'
 import { findDOMNode } from 'react-dom'
 import interact from 'interact.js'
 
-
 export default class Interactable extends Component {
 
   static defaultProps = {
