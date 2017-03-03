@@ -2,8 +2,8 @@ import React from 'react'
 import { cellHeight, cellWidth } from '../config';
 
 const gridStyle = {
-  "display": "block",
-  "margin": "50px auto"
+  'display': 'block',
+  'margin': '50px auto'
 }
 
 export default function Grid(props) {

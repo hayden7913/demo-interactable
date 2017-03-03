@@ -1,9 +1,9 @@
-import React from 'react'
-import Grid from './components/Grid'
-import { Rect, Circle } from './components/Modules'
+import React from 'react';
+import Grid from './components/Grid';
+import { Rect, Circle } from './components/Modules';
 
 const containerStyle = {
-  "width": "2000px"
+  'width': '2000px'
 }
 
 export default function App() {
